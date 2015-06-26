@@ -17,13 +17,14 @@ sudo apt-get install gnuplot
 
 
 
-mtr www.google.co.uk -c 5 -r -i 1 > mtr_out.txt
-
-cat mtr_out.txt | awk '{print $2"\t"$6}'
+mtr www.google.co.uk -c 5 -r -i 1 -w > mtr_out.txt
 
 #For naming the files correctly:
 echo "/home/el/myfile/`date '+%Y_%m_%d__%H_%M_%S'`.ponies"
 
+mtr www.google.co.uk -c 20 -r -i 0.1 -w > `date '+%Y_%m_%d__%H_%M_%S'`.txt
+
+cat mtr_out.txt | awk '{print $2"\t"$6}'
 
 
 Think I should be aiming for the following:
