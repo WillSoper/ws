@@ -1,0 +1,14 @@
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\bin\Debug\netcoreapp2.1\AdventOfCode2017.deps.json
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\bin\Debug\netcoreapp2.1\AdventOfCode2017.runtimeconfig.json
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\bin\Debug\netcoreapp2.1\AdventOfCode2017.runtimeconfig.dev.json
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\bin\Debug\netcoreapp2.1\AdventOfCode2017.dll
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\bin\Debug\netcoreapp2.1\AdventOfCode2017.pdb
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\bin\Debug\netcoreapp2.1\AdventOfCodeShared.dll
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\bin\Debug\netcoreapp2.1\AdventOfCodeShared.pdb
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\obj\Debug\netcoreapp2.1\AdventOfCode2017.csprojAssemblyReference.cache
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\obj\Debug\netcoreapp2.1\AdventOfCode2017.csproj.CoreCompileInputs.cache
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\obj\Debug\netcoreapp2.1\AdventOfCode2017.AssemblyInfoInputs.cache
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\obj\Debug\netcoreapp2.1\AdventOfCode2017.AssemblyInfo.cs
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\obj\Debug\netcoreapp2.1\AdventOfCode2017.csproj.CopyComplete
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\obj\Debug\netcoreapp2.1\AdventOfCode2017.dll
+C:\Users\soper\OneDrive\Documents\GitHub\ws\AdventOfCode2017\obj\Debug\netcoreapp2.1\AdventOfCode2017.pdb
