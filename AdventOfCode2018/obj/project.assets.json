@@ -529,10 +529,11 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.1.0": {
-      "sha512": "TT+QCi9LcxGTjBssH7S7n5+8DVcwfG4DYgXX7Dk7+BfZ4oVHj8Q0CbYk9glzAlHLsSt3bYzol+fOdra2iu6GOw==",
+      "sha512": "aSTPL94NloSiQVL5Len8wbjFKOnoAX/vOh3s3DF6g3c7GUUMLCDvnBhmA72M2iN2AedyA8hpr7m89kzSAKUnJQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -700,23 +701,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\soper\\.nuget\\packages\\": {},
+    "C:\\Users\\c53676a\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\soper\\OneDrive\\Documents\\GitHub\\ws\\AdventOfCode2018\\AdventOfCode2018.csproj",
+      "projectUniqueName": "C:\\git\\ws\\AdventOfCode2018\\AdventOfCode2018.csproj",
       "projectName": "AdventOfCode2018",
-      "projectPath": "C:\\Users\\soper\\OneDrive\\Documents\\GitHub\\ws\\AdventOfCode2018\\AdventOfCode2018.csproj",
-      "packagesPath": "C:\\Users\\soper\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\soper\\OneDrive\\Documents\\GitHub\\ws\\AdventOfCode2018\\obj\\",
+      "projectPath": "C:\\git\\ws\\AdventOfCode2018\\AdventOfCode2018.csproj",
+      "packagesPath": "C:\\Users\\c53676a\\.nuget\\packages\\",
+      "outputPath": "C:\\git\\ws\\AdventOfCode2018\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\soper\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\c53676a\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -727,8 +728,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\soper\\OneDrive\\Documents\\GitHub\\ws\\AdventOfCodeShared\\AdventOfCodeShared.csproj": {
-              "projectPath": "C:\\Users\\soper\\OneDrive\\Documents\\GitHub\\ws\\AdventOfCodeShared\\AdventOfCodeShared.csproj"
+            "C:\\git\\ws\\AdventOfCodeShared\\AdventOfCodeShared.csproj": {
+              "projectPath": "C:\\git\\ws\\AdventOfCodeShared\\AdventOfCodeShared.csproj"
             }
           }
         }
