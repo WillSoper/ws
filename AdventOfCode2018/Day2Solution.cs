@@ -63,8 +63,64 @@ namespace AdventOfCode2018
         public string GetSolutionPart2(IEnumerable<string> input)
         {
             //Compare all strings, find those that differ by only 1 char in the same position
+           
+            var inputArray = input.ToArray();
+            //Array.Sort(inputArray, StringComparer.InvariantCulture);
+            //We don't need to sort - I think there's another way to do this using that though.
 
+            string compareOuter = string.Empty;
+            string compareTo = string.Empty;
+
+            List<string> matchingLetters = new List<string>();
+
+            //Outer counter goes through whole list starting at 0
+            for (int outerCounter = 0; outerCounter < inputArray.Length; outerCounter++)
+            {                        
+                compareOuter = inputArray[outerCounter];
+                var compareOuterArr = compareOuter.ToCharArray();
+
+                //Inner counter goes through whole list starting from outer +1 (prev ones already compared)
+                for (int innerCounter = outerCounter; innerCounter < (inputArray.Length)-outerCounter; innerCounter++)
+                {
+                    compareTo = inputArray[innerCounter];
+                    var compareToArr = compareTo.ToCharArray();
+
+                    int numLettersDifferent = 0;
+                    for (int c = 0; c < compareToArr.Length; c++)
+                    {
+                         if (compareToArr[c] == compareOuterArr[c])
+                         {
+                            //if letters are same, add to list
+                             matchingLetters.Add(compareOuterArr[c].ToString());
+                         }
+                         else
+                         {
+                            //if letters not same, increment diff counter
+                             numLettersDifferent++;
+                         }
+
+                        //and if differences >1 break - remember to clear list of same letters
+                        if (numLettersDifferent > 1)
+                        {
+                            matchingLetters.Clear();
+                            break;
+                        }
+                    }
+                    //If we get here with only one difference, we found the right one, break.
+                    if (numLettersDifferent == 1)
+                    {
+                        Console.WriteLine("Solution found.");
+                        foreach (var item in matchingLetters)
+                        {
+                            Console.Write(item);
+                        }
+                        Console.WriteLine();
+                    }    
+                }
+            }
+            
             //Then, remove the different chars, and the answer is the shared chars
+            return "Day 2 pt 2 done";
         }
     }
 }

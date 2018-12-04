@@ -22,6 +22,10 @@ namespace AdventOfCode2018
             var contentDay2 = File.ReadAllLines("inputs/day2.txt");
             Console.WriteLine("Day 2 part 1:");
             Console.WriteLine(day2.GetSolutionPart1(contentDay2));
+
+            Console.WriteLine("Day 2 part 2:");
+            Console.WriteLine(day2.GetSolutionPart2(contentDay2));
+            
         }
     }
 }
