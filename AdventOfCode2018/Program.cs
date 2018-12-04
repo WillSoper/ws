@@ -33,9 +33,6 @@ namespace AdventOfCode2018
             Console.WriteLine("Day 2 part 2:");
             Console.WriteLine(day2.GetSolutionPart2(contentDay2));
 
-
-           
-            
         }
     }
 }
