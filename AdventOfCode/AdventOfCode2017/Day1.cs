@@ -49,10 +49,10 @@ namespace AdventOfCode2017
                 tmp.AddRange(item.Select(x => int.Parse(x.ToString())).ToArray());
                 for (int i = 0; i < tmp.Count/2 ; i++) //div by 2 - Make sure that we're not more than half way through, otherwise IndexOutOfRange
                 {
-                    if (tmp[i])
-                    {
+                    // if (tmp[i])
+                    // {
                         
-                    }
+                    // }
                 }
 
                 // if[arrthis] == arr[this+halfArrLength]
