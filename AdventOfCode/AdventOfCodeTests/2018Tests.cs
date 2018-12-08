@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using AdventOfCode2018;
+using System.Collections.Generic;
 
 namespace AdventOfCodeTests
 {
@@ -20,5 +21,77 @@ namespace AdventOfCodeTests
             //Assert
             Assert.Equal(correctDateParsed, result.DateTimeOfAction);
         }
+
+        [Fact]
+        public void sortedListOfRecordsReturned()
+        {
+            //Arrange
+            Day4Solution slnUnderTest = new Day4Solution();
+            DateTime correctFirstDate = DateTime.Parse("1518-11-03 00:29");
+            DateTime correctLastDate = DateTime.Parse("1518-11-04 00:36");
+
+            List<string> testRecords = new List<string>() {                
+                "[1518-11-04 00:02] Guard #99 begins shift",
+                "[1518-11-04 00:36] falls asleep",
+                "[1518-11-03 00:29] wakes up"
+            };
+
+            //Act
+            var result = slnUnderTest.GetSortedRecordsFromFile(testRecords);
+
+            //Assert
+            Assert.Equal(correctFirstDate, result[0].DateTimeOfAction);
+            Assert.Equal(correctLastDate, result[2].DateTimeOfAction);
+        }
+
+        //newGuard on shift found
+        [Fact]
+        public void newGuardOnShiftFound()
+        {
+            //Arrange 
+            Day4Solution slnUnderTest = new Day4Solution();
+            int correctGuardId = 99; 
+            string correctGuardAction = "start";
+            string testInput = "[1518-11-04 00:02] Guard #99 begins shift";
+            
+            //Act 
+            var result = slnUnderTest.GetRecordFromRow(testInput);
+
+            //Assert
+            Assert.Equal(correctGuardId, result.GuardId);
+            Assert.Equal(correctGuardAction, result.GuardAction);
+        }
+
+        [Fact]        
+        public void guardFallsAsleepFound()
+        {
+            //Arrange
+            Day4Solution slnUnderTest = new Day4Solution();
+            string correctGuardAction = "sleep";
+            string testInput = "[1518-04-18 00:06] falls asleep";
+            
+            //Act
+            var result = slnUnderTest.GetRecordFromRow(testInput);
+
+            //Assert
+            Assert.Equal(correctGuardAction, result.GuardAction);
+        }
+
+        [Fact]
+        public void guardWakesUpFound()
+        {
+            //Arrange
+            Day4Solution slnUnderTest = new Day4Solution();
+            string correctGuardAction = "wake";
+            string testInput = "[1518-02-26 00:51] wakes up";
+            
+            //Act
+            var result = slnUnderTest.GetRecordFromRow(testInput);
+
+            //Assert
+            Assert.Equal(correctGuardAction, result.GuardAction);
+        }
+
+
     }
 }
