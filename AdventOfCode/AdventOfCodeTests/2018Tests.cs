@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using AdventOfCode2018;
 using System.Collections.Generic;
+using System.IO;
 
 namespace AdventOfCodeTests
 {
@@ -92,6 +93,34 @@ namespace AdventOfCodeTests
             Assert.Equal(correctGuardAction, result.GuardAction);
         }
 
+        [Fact]
+        public void totalTimeGuardAsleepFound()
+        {
+            //Arrange
+            Day4Solution slnUnderTest = new Day4Solution();
+            var testRecords = File.ReadAllLines("../../../TestInputs/day4test.txt");
+            int correctNumMinutesAsleep = 50;
 
+            //Act
+            var result = slnUnderTest.GetGuardWhoSleptMost(testRecords);            
+
+            //Assert
+            Assert.Equal(correctNumMinutesAsleep, result.NumMinutesSlept);
+        }
+
+        [Fact]
+        public void mostAsleepMinuteForGivenGuardFound()
+        {
+            //Arrange
+            // Day4Solution slnUnderTest = new Day4Solution();
+            // var testRecords = File.ReadAllLines("../../../TestInputs/day4test.txt");
+            // int mostAsleepMinute = 24;            
+
+            // //Act
+            // var result = sln
+
+            //Assert
+            Assert.Equal(true, true);
+        }
     }
 }

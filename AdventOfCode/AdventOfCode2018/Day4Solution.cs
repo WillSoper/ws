@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace AdventOfCode2018
 {
@@ -49,12 +50,51 @@ namespace AdventOfCode2018
 
             return retVal;
         }
+        public GuardDetail GetGuardWhoSleptMost(IEnumerable<string> fileInput)
+        {
+            var sortedRecords = GetSortedRecordsFromFile(fileInput);
+
+            Dictionary<int, int> GuardsAndAmountsSlept = new Dictionary<int, int>();
+
+            int CurrentGuardId = 0;
+            DateTime LastGuardSleep = DateTime.MinValue;
+            foreach (var item in sortedRecords)
+            {
+                if (item.GuardAction == "start")
+                {
+                    CurrentGuardId = item.GuardId;
+                    if(!GuardsAndAmountsSlept.ContainsKey(item.GuardId))
+                    {
+                        GuardsAndAmountsSlept.Add(item.GuardId, 0);
+                    }                    
+                }
+                else if (item.GuardAction == "sleep")
+                {
+                    LastGuardSleep = item.DateTimeOfAction;
+                }
+                else if (item.GuardAction == "wake")
+                {
+                    TimeSpan amountSlept = item.DateTimeOfAction - LastGuardSleep;
+                    GuardsAndAmountsSlept[CurrentGuardId] += (int)amountSlept.TotalMinutes;
+                }
+            }
+            
+            var guardSleptMost = GuardsAndAmountsSlept.Where(g => g.Value == GuardsAndAmountsSlept.Values.Max()).SingleOrDefault();
+            
+            return new GuardDetail() {GuardId =guardSleptMost.Key, NumMinutesSlept = guardSleptMost.Value};
+        }
 
         public struct RecordDetail
         {
             public DateTime DateTimeOfAction;
             public int GuardId;
             public string GuardAction;
+        }
+
+        public struct GuardDetail
+        {
+            public int GuardId;
+            public int NumMinutesSlept;
         }
     }
 }
