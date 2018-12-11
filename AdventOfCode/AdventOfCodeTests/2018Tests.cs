@@ -112,15 +112,33 @@ namespace AdventOfCodeTests
         public void mostAsleepMinuteForGivenGuardFound()
         {
             //Arrange
-            // Day4Solution slnUnderTest = new Day4Solution();
-            // var testRecords = File.ReadAllLines("../../../TestInputs/day4test.txt");
-            // int mostAsleepMinute = 24;            
+            Day4Solution slnUnderTest = new Day4Solution();
+            var testRecords = File.ReadAllLines("../../../TestInputs/day4test.txt");
+            int mostAsleepMinute = 24;            
 
             // //Act
-            // var result = sln
+            int GuardId = 10;
+            int result = slnUnderTest.GetMinuteGuardMostAsleep(testRecords, GuardId);
 
             //Assert
-            Assert.Equal(true, true);
+            Assert.Equal(mostAsleepMinute, result);
+        }
+
+        [Fact] void SolutionDay1()
+        {
+            //Arrange
+            Day4Solution slnUnderTest = new Day4Solution();
+            var testRecords = File.ReadAllLines("../../../TestInputs/day4.txt");            
+
+            // //Act                        
+            var guard = slnUnderTest.GetGuardWhoSleptMost(testRecords);
+            int minuteGuardSleptMost = slnUnderTest.GetMinuteGuardMostAsleep(testRecords, guard.GuardId);
+
+            //Assert
+            Assert.Equal(28, minuteGuardSleptMost);
+            Assert.Equal(502, guard.NumMinutesSlept);
+
+            //14056 is too low  -  
         }
     }
 }

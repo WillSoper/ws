@@ -22,6 +22,13 @@ namespace AdventOfCode2018
             return retVal;
         }
 
+        public void GetSolutionPart1(string[] fileInput)
+        {
+            var GuardSleptMost = GetGuardWhoSleptMost(fileInput);
+            Console.WriteLine("Guard {0} slept for {1} mins");
+            Console.WriteLine("Most common minute {0}", GetMinuteGuardMostAsleep(fileInput, GuardSleptMost.GuardId));
+        }
+
         public RecordDetail GetRecordFromRow(string rowToProcess)
         {
             RecordDetail retVal = new RecordDetail();
@@ -82,6 +89,49 @@ namespace AdventOfCode2018
             var guardSleptMost = GuardsAndAmountsSlept.Where(g => g.Value == GuardsAndAmountsSlept.Values.Max()).SingleOrDefault();
             
             return new GuardDetail() {GuardId =guardSleptMost.Key, NumMinutesSlept = guardSleptMost.Value};
+        }
+
+        public int GetMinuteGuardMostAsleep(IEnumerable<string> fileInput, int guardId)
+        {
+            Dictionary<int, int> minutesAndCounts = new Dictionary<int, int>();
+            for (int i = 0; i < 60; i++)
+            {
+                minutesAndCounts.Add(i, 0);
+            }
+
+            var sortedRecords = GetSortedRecordsFromFile(fileInput);
+
+            int CurrentGuardId = 0;            
+            DateTime LastGuardSleep = DateTime.MinValue;
+            foreach (var item in sortedRecords)
+            {
+                if (item.GuardAction == "start")
+                {
+                    CurrentGuardId = item.GuardId;
+                }  
+                if (CurrentGuardId == guardId)
+                {
+                    if (item.GuardAction == "sleep")
+                    {
+                        LastGuardSleep = item.DateTimeOfAction;
+                    } 
+                    else if (item.GuardAction == "wake")
+                    {
+                        TimeSpan amountSlept = item.DateTimeOfAction - LastGuardSleep;
+                        for (int i = 0; i < amountSlept.TotalMinutes; i++)
+                        {
+                            int thisMinute = LastGuardSleep.Minute + i;
+                            if (thisMinute > 60)
+                            {
+                                thisMinute = thisMinute -60;
+                            }
+                            minutesAndCounts[thisMinute]++;
+                        }
+                    }
+                }                            
+            }
+
+            return minutesAndCounts.Where(g => g.Value == minutesAndCounts.Values.Max()).SingleOrDefault().Key;
         }
 
         public struct RecordDetail
