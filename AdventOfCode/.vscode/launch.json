@@ -4,15 +4,16 @@
    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
    "version": "0.2.0",
    "configurations": [
+
         {
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/AdventOfCode2017/bin/Debug/netcoreapp2.1/AdventOfCode2017.dll",
+            "program": "${workspaceFolder}/AdventOfCode2018/bin/Debug/netcoreapp2.1/AdventOfCode2018.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/AdventOfCode2017",
+            "cwd": "${workspaceFolder}/AdventOfCode2018",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
             "console": "internalConsole",
             "stopAtEntry": false,

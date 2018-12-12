@@ -93,6 +93,13 @@ namespace AdventOfCode2018
 
         public int GetMinuteGuardMostAsleep(IEnumerable<string> fileInput, int guardId)
         {
+            var minutesAndCounts = getMinutesAndCountsForGivenGuard(fileInput, guardId);
+
+            return minutesAndCounts.Where(g => g.Value == minutesAndCounts.Values.Max()).SingleOrDefault().Key;
+        }
+
+        private Dictionary<int, int> getMinutesAndCountsForGivenGuard(IEnumerable<string> fileInput, int guardId)
+        {
             Dictionary<int, int> minutesAndCounts = new Dictionary<int, int>();
             for (int i = 0; i < 60; i++)
             {
@@ -130,8 +137,42 @@ namespace AdventOfCode2018
                     }
                 }                            
             }
+            return minutesAndCounts;
+        }
 
-            return minutesAndCounts.Where(g => g.Value == minutesAndCounts.Values.Max()).SingleOrDefault().Key;
+        public GuardDetail GetGuardWhoSleptOnOneMinuteMost(IEnumerable<string> fileInput)
+        {
+            int GuardAsleepMost = 0;
+            int MinuteGuardAsleepMost = 0;
+            int AmountGuardAsleepMost = 0;
+            
+            var AllGuards = FindAllGuards(fileInput);
+            foreach (var guard in AllGuards)
+            {
+                var minutesAndCounts = getMinutesAndCountsForGivenGuard(fileInput, guard);
+                var thisGuardDetail = minutesAndCounts.Where(g => g.Value == minutesAndCounts.Values.Max()).FirstOrDefault();
+                if (thisGuardDetail.Value > AmountGuardAsleepMost)
+                {
+                    GuardAsleepMost = guard;
+                    MinuteGuardAsleepMost = thisGuardDetail.Key;
+                    AmountGuardAsleepMost = thisGuardDetail.Value;
+                }
+            }
+            return new GuardDetail() { GuardId = GuardAsleepMost};
+        }
+
+        public List<int> FindAllGuards(IEnumerable<string> fileInput)
+        {
+            List<int> retVal = new List<int>();
+            var sortedRecords = GetSortedRecordsFromFile(fileInput);
+            foreach (var record in sortedRecords)
+            {
+                if (record.GuardAction == "start" && !retVal.Contains(record.GuardId))
+                {
+                    retVal.Add(record.GuardId);
+                }
+            }
+            return retVal;
         }
 
         public struct RecordDetail
@@ -147,4 +188,4 @@ namespace AdventOfCode2018
             public int NumMinutesSlept;
         }
     }
-}
+};

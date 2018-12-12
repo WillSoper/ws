@@ -137,8 +137,59 @@ namespace AdventOfCodeTests
             //Assert
             Assert.Equal(28, minuteGuardSleptMost);
             Assert.Equal(502, guard.NumMinutesSlept);
+            Assert.Equal(2753, guard.GuardId);
 
-            //14056 is too low  -  
+            //14056 is too low  -  multiplied the wrong numbers!! DUMMY!
+            //77084 is correct
         }
+
+        [Fact]
+        public void FindAllGuards()
+        {
+            //Arrange
+            Day4Solution slnUnderTest = new Day4Solution();
+            List<string> testRecords = new List<string>(){
+                "[1518-07-02 23:59] Guard #2251 begins shift",
+                "[1518-08-08 00:55] falls asleep",
+                "[1518-04-30 23:58] Guard #911 begins shift",
+                "[1518-03-06 23:56] Guard #2707 begins shift",
+                "[1518-04-06 00:42] falls asleep",
+                "[1518-08-06 23:59] Guard #1999 begins shift"
+
+            };
+            List<int> correctListOfAllGuards = new List<int>() {911, 1999, 2251, 2707};
+
+            //Act
+            var result = slnUnderTest.FindAllGuards(testRecords);
+            
+            //Assert
+            Assert.Equal(correctListOfAllGuards.Count, result.Count);
+        }
+        
+        
+        [Fact]
+        public void SolutionDay1pt2()
+        {
+            //Arrange
+            Day4Solution slnUnderTest = new Day4Solution();
+            var testRecords = File.ReadAllLines("../../../TestInputs/day4.txt");     
+
+            //Act
+            var guard = slnUnderTest.GetGuardWhoSleptOnOneMinuteMost(testRecords);
+            int minuteGuardSleptMost = slnUnderTest.GetMinuteGuardMostAsleep(testRecords, guard.GuardId);            
+
+            //Assert
+            Assert.Equal(1213, guard.GuardId);
+            Assert.Equal(19, minuteGuardSleptMost);
+            Assert.Equal(23047, guard.GuardId*minuteGuardSleptMost);
+        }
+
+// Strategy 2: Of all guards, which guard is most frequently asleep on the same minute?
+// In the example above, Guard #99 spent minute 45 asleep more than any other guard or 
+//minute - three times in total. (In all other cases, any guard spent any minute asleep 
+//at most twice.)
+
+// What is the ID of the guard you chose multiplied by the minute you chose? 
+//  (In the above example, the answer would be 99 * 45 = 4455.)
     }
 }
