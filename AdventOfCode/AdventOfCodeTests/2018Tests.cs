@@ -301,4 +301,73 @@ namespace AdventOfCodeTests
         //     Assert.Equal(firstUsefulIteration, result);
         // }
     }
+
+    public class Day6Tests
+    {
+        [Theory]
+        [InlineData(1,1,2,2,2)]
+        [InlineData(1,1,2,1,1)]
+        [InlineData(50,50,75,75,50)]
+        [InlineData(20,20,-50,-10, 100)]
+        public void manhattanDistanceBetweenPoints(int x1, int y1, int x2, int y2, int expected)
+        {
+            //Arrange
+            Day6Solution slnUnderTest = new Day6Solution();
+            point pointFrom = new point() {X = x1, Y = y1};
+            point pointTo = new point() {X = x2, Y = y2};
+            
+            //Act
+            int distance = slnUnderTest.getDistanceBetweenPoints(pointFrom, pointTo);
+
+            //Assert
+            Assert.Equal(expected, distance);
+
+        }
+        [Fact]
+        public void furthestPointsFound()
+        {
+            //Arrange
+            Day6Solution slnUnderTest = new Day6Solution();
+            List<string> testInput = new List<string>();
+
+            //Act
+
+            //Assert
+            
+            //Parse all start points, take min and max X & Y, draw a box +1
+            // (Should return 2 points, bottom left, top right)
+        }
+
+        [Theory]
+        [InlineData ("1, 1", 1, 1)]
+        [InlineData ("-1234, 6000", -1234, 6000)]
+        [InlineData ("8, 3", 8, 3)]
+        [InlineData ("3, 4", 3, 4)]
+        [InlineData ("5, 5", 5, 5)]
+        [InlineData ("8, 9", 8, 9)]
+        public void pointsFromLineFound(string inputString, int expectX, int expectY)
+        {
+            //Arrange
+            Day6Solution slnUnderTest = new Day6Solution();
+            
+            //Act
+            point result = slnUnderTest.parseInputLine(inputString);
+
+            //Assert
+            Assert.Equal(result.X, expectX);
+            Assert.Equal(result.Y, expectY);
+            
+        }
+
+
+// 1, 1
+// 1, 6
+// 8, 3
+// 3, 4
+// 5, 5
+// 8, 9
+
+//Answer = 17
+        
+    }
 }
