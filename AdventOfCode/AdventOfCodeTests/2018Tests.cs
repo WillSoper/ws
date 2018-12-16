@@ -6,6 +6,59 @@ using System.IO;
 
 namespace AdventOfCodeTests
 {
+    public class Day5Tests
+    {
+        [Fact]
+        public void exampleOneParsedCorrectly()
+        {
+            //Arrange
+            string exampleInput = "dabAcCaCBAcCcaDA";
+            string correctAnswer = "dabCBAcaDA";
+            Day5Solution slnUnderTest = new Day5Solution();
+
+            //Act
+            string result = slnUnderTest.getPt1AnswerString(exampleInput);
+            
+            //Assert
+            Assert.Equal(correctAnswer, result);
+        }
+
+        [Fact]
+        public void exampleOneAnswerCorrect()
+        {        
+            //8829 is too low
+            //9203 is too high  -  durrr. I included a \n
+            //9202 is right answer
+
+            //Arrange
+            string exampleInput = "dabAcCaCBAcCcaDA";
+            int correctAnswer = 10;
+            Day5Solution slnUnderTest = new Day5Solution();
+
+            //Act
+            int result = slnUnderTest.getPt1Answer(exampleInput);
+            
+            //Assert
+            Assert.Equal(correctAnswer, result);
+        }
+
+        [Fact]
+        public void part2correctAnswer()
+        {
+            //Arrange   
+            string exampleInput = "dabAcCaCBAcCcaDA";
+            // string correctAnswer = "daDA";
+            int correctAnswer = 4;
+            Day5Solution slnUnderTest = new Day5Solution();
+
+            //Act
+            int result = slnUnderTest.getPt2Answer(exampleInput);
+            
+            //Assert
+            Assert.Equal(correctAnswer, result);
+        }
+    }
+
     public class Day4Tests
     {
         [Fact]
@@ -183,13 +236,69 @@ namespace AdventOfCodeTests
             Assert.Equal(19, minuteGuardSleptMost);
             Assert.Equal(23047, guard.GuardId*minuteGuardSleptMost);
         }
+    }
 
-// Strategy 2: Of all guards, which guard is most frequently asleep on the same minute?
-// In the example above, Guard #99 spent minute 45 asleep more than any other guard or 
-//minute - three times in total. (In all other cases, any guard spent any minute asleep 
-//at most twice.)
+    public class Day12Tests
+    {
+        [Fact]
+        public void potLayoutReturned()
+        {
+            //Arrange
+            Day12Solution slnUnderTest = new Day12Solution();
+            string initialState = "#..#.#..##......###...###";
+            Dictionary<int, bool> correctLayout = new Dictionary<int, bool>();
+            correctLayout.Add(0, true);
+            correctLayout.Add(1, false);
+            correctLayout.Add(2, false);
+            correctLayout.Add(3, true);
+            correctLayout.Add(4, false);
+            correctLayout.Add(5, true);
+            correctLayout.Add(6, false);
+            correctLayout.Add(7, false);
+            correctLayout.Add(8, true);
+            correctLayout.Add(9, true);
+            correctLayout.Add(10, false);
+            correctLayout.Add(11, false);
+            correctLayout.Add(12, false);
+            correctLayout.Add(13, false);
+            correctLayout.Add(14, false);
+            correctLayout.Add(15, false);
+            correctLayout.Add(16, true);
+            correctLayout.Add(17, true);
+            correctLayout.Add(18, true);
+            correctLayout.Add(19, false);
+            correctLayout.Add(20, false);
+            correctLayout.Add(21, false);
+            correctLayout.Add(22, true);
+            correctLayout.Add(23, true);
+            correctLayout.Add(24, true);
 
-// What is the ID of the guard you chose multiplied by the minute you chose? 
-//  (In the above example, the answer would be 99 * 45 = 4455.)
+            //Act
+            Dictionary<int, bool> result = slnUnderTest.parseRow(initialState);
+
+            //Assert
+            Assert.Equal(correctLayout, result);
+        }
+
+        // [Fact]
+        // public void firstPatternMatchWorks()
+        // {
+        //     //Ar
+        //     string initialState =           "#..#.#..##......###...###";
+        //     string correctFirstIteration =  "#...#....#.....#..#..#..#";
+        //     string firstUsefulPattern =     "...## => #";
+        //     string firstUsefulIteration =   "#..#.#..##.....####..####";
+
+        //     //1zz1z1zz11zzzzzz111zzz111
+        //     //zzz11 => 1
+
+        //     Day12Solution slnUnderTest = new Day12Solution();
+            
+        //     //Ac
+        //     string result = slnUnderTest.performTransform(initialState, firstUsefulPattern);
+            
+        //     //As
+        //     Assert.Equal(firstUsefulIteration, result);
+        // }
     }
 }

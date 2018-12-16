@@ -7,6 +7,18 @@ namespace AdventOfCode2018
     {
         static void Main(string[] args)
         {
+            
+
+            Day5Solution day5pt2 = new Day5Solution();
+            var contentDay5pt2 = File.ReadAllText("inputs/day5.txt");
+            Console.WriteLine("Day 5 pt2 answer: {0}", day5pt2.getPt2Answer(contentDay5pt2));
+
+            Console.ReadLine();
+
+            Day5Solution day5 = new Day5Solution();
+            var contentDay5 = File.ReadAllText("inputs/day5.txt");
+            Console.WriteLine("Day 5 answer: {0}", day5.getPt1Answer(contentDay5));
+            
             Day4Solution day4 = new Day4Solution();
             var contentDay4 = File.ReadAllLines("inputs/day4.txt");
             Console.WriteLine("Day4 part 1:");
