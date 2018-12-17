@@ -323,20 +323,6 @@ namespace AdventOfCodeTests
             Assert.Equal(expected, distance);
 
         }
-        [Fact]
-        public void furthestPointsFound()
-        {
-            //Arrange
-            Day6Solution slnUnderTest = new Day6Solution();
-            List<string> testInput = new List<string>();
-
-            //Act
-
-            //Assert
-            
-            //Parse all start points, take min and max X & Y, draw a box +1
-            // (Should return 2 points, bottom left, top right)
-        }
 
         [Theory]
         [InlineData ("1, 1", 1, 1)]
@@ -359,15 +345,54 @@ namespace AdventOfCodeTests
             
         }
 
+        [Fact]
+        public void furthestPointsFound()
+        {
+            //Arrange
+            Day6Solution slnUnderTest = new Day6Solution();
+            List<string> testInput = new List<string>();
+            testInput.Add("1, 1");
+            testInput.Add("1, 6");
+            testInput.Add("8, 3");
+            testInput.Add("3, 4");
+            testInput.Add("5, 5");
+            testInput.Add("4, 9");
 
-// 1, 1
-// 1, 6
-// 8, 3
-// 3, 4
-// 5, 5
-// 8, 9
+            box expectedResult = new box(){
+                bottomLeft = new point() {X=1, Y=1},
+                topRight = new point() {X=8, Y=9}
+                };
 
-//Answer = 17
+            //Act
+            box result = slnUnderTest.GetLargestArea(testInput);
+
+            //Assert
+            Assert.Equal(expectedResult.bottomLeft, result.bottomLeft);
+            Assert.Equal(expectedResult.bottomLeft, result.bottomLeft);
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Fact]
+        public void getPt1Answer()
+        {
+            //Arrange
+            Day6Solution slnUnderTest = new Day6Solution();
+            List<string>  testInput = new List<string>();
+            testInput.Add("1, 1");
+            testInput.Add("1, 6");
+            testInput.Add("8, 3");
+            testInput.Add("3, 4");
+            testInput.Add("5, 5");
+            testInput.Add("8, 9");
+            int expectedResult = 17;
+
+            //Act
+            int result = slnUnderTest.GetSolutionPt1(testInput);
+            
+            //Assert
+            Assert.Equal(expectedResult, result);
+
+        }
         
     }
 }
