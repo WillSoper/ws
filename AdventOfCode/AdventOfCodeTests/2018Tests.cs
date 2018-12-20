@@ -395,4 +395,26 @@ namespace AdventOfCodeTests
         }
         
     }
+
+    public class Day7Tests
+    {
+        [Fact]
+        public void day7Part1Solution()
+        {
+            //Arrange
+            List<string> testInput = new List<string>();
+            testInput.Add("Step C must be finished before step A can begin.");
+            testInput.Add("Step C must be finished before step F can begin.");
+            testInput.Add("Step A must be finished before step B can begin.");
+            testInput.Add("Step A must be finished before step D can begin.");
+            testInput.Add("Step B must be finished before step E can begin.");
+            testInput.Add("Step D must be finished before step E can begin.");
+            testInput.Add("Step F must be finished before step E can begin.");
+            
+            string expectedResult = "CABDFE";
+            //Act
+
+            //Assert
+        }
+    }
 }
