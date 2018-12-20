@@ -60,6 +60,9 @@ namespace AdventOfCode2018
             
             box LargestArea = GetLargestArea(fileInput);
 
+            //To hold points that have areas which are infinite
+            List<point> DiscardList = new List<point>(); 
+
             //Iterate over all X - add one to top and bottom for infinite areas in X plane
             for (int x = LargestArea.bottomLeft.X - 1; x <= LargestArea.topRight.X+1; x++)
             {
@@ -85,15 +88,31 @@ namespace AdventOfCode2018
                         //owned by one
                         var owner = PossibleOwnerAndDistance.Where(p => p.Value == shortestDistance).SingleOrDefault().Key;
                         GridRefAndOwner.Add(thisLocation, owner);
-                    }
 
-                    //Add points in the StartingPoints list that show up in the absolute edge to a Discard list
+                        //If this is a point outside the largest box in any direction, it must be an infinite area. Add owner to discard list
+                        if (y == LargestArea.bottomLeft.Y-1 || y == LargestArea.topRight.Y+1 || x == LargestArea.bottomLeft.X-1 || x == LargestArea.bottomLeft.X+1)
+                        {
+                            if (!DiscardList.Any(p => p.X == thisLocation.X && p.Y == thisLocation.Y))
+                            {
+                                DiscardList.Add(owner);
+                            }
+                        }
+                    }                    
                 }
             }
             
             //For each point *not* in the discard list, count total spaces owned
+            int MaxOwned = 0;
+            foreach (point StartingLocation in StartingPoints.Where(p => !DiscardList.Any(d => d.X == p.X && d.Y == p.Y)))
+            {
+                int theNumOwnedByThisPoints = GridRefAndOwner.Where(p => p.Value.HasValue && p.Value.Value.X == StartingLocation.X && p.Value.Value.Y == StartingLocation.Y).Count();
+                if (theNumOwnedByThisPoints > MaxOwned)
+                {
+                    MaxOwned = theNumOwnedByThisPoints;
+                }
+            }
 
-            return 0;
+            return MaxOwned;
         }
     }
     public struct point
