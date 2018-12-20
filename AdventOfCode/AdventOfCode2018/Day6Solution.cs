@@ -114,6 +114,43 @@ namespace AdventOfCode2018
 
             return MaxOwned;
         }
+
+        public int GetSolutionPt2(List<string> fileInput)
+        {
+            //Find all startPoints             
+            List<point> StartingPoints = new List<point>();
+            foreach (var inputRow in fileInput)
+            {
+                StartingPoints.Add(parseInputLine(inputRow));
+            }            
+            
+            box LargestArea = GetLargestArea(fileInput);
+
+            //To hold points that have areas which are infinite
+            List<point> DiscardList = new List<point>(); 
+
+            int TotalAreaCloserthan10k = 0;
+            //Iterate over all X - add one to top and bottom for infinite areas in X plane
+            for (int x = LargestArea.bottomLeft.X; x <= LargestArea.topRight.X; x++)
+            {
+                //Iterate over all Y - add one to top and bottom for infinite areas Y plane
+                for (int y = LargestArea.bottomLeft.Y; y <= LargestArea.topRight.Y; y++)
+                {
+                    point thisLocation = new point() {X=x, Y=y};                    
+                    int TotalDistanceToAllPoints = 0;
+                    foreach (point StartingPoint in StartingPoints)
+                    {
+                        TotalDistanceToAllPoints += getDistanceBetweenPoints(thisLocation, StartingPoint);
+                    }
+                    if (TotalDistanceToAllPoints < 10000)
+                    {
+                        TotalAreaCloserthan10k++;
+                    }
+                }
+            }
+
+            return TotalAreaCloserthan10k;
+        }
     }
     public struct point
     {

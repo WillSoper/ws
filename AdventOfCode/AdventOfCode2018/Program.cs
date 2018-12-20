@@ -11,6 +11,7 @@ namespace AdventOfCode2018
             Day6Solution day6pt1 = new Day6Solution();
             var contentDay6 = File.ReadAllLines("inputs/day6.txt").ToList();
             Console.WriteLine("Day 6 pt1 answer: {0}", day6pt1.GetSolutionPt1(contentDay6));
+            Console.WriteLine("Day 6 pt2 answer: {0}", day6pt1.GetSolutionPt2(contentDay6));
 
             Console.ReadLine();            
 
