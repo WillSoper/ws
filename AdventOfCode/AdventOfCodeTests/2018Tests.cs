@@ -416,5 +416,21 @@ namespace AdventOfCodeTests
 
             //Assert
         }
+
+        [Theory]
+        [InlineData ("Step C must be finished before step A can begin.", 'C', 'A')]
+        [InlineData ("Step N must be finished before step Z can begin.", 'N', 'Z')]
+        public void inputLineParsedSuccessfully(string inputString, char expectedFirstChar, char expectedSecondChar)
+        {
+            //Arrange
+            Day7Solution slnUnderTest = new Day7Solution();
+            
+            //Act
+            Tuple<char,char> result = slnUnderTest.parseInputLine(inputString);
+            
+            //Assert
+            Assert.Equal(expectedFirstChar, result.Item1);
+            Assert.Equal(expectedSecondChar, result.Item2);
+        }
     }
 }
