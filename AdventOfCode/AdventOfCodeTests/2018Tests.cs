@@ -402,6 +402,7 @@ namespace AdventOfCodeTests
         public void day7Part1Solution()
         {
             //Arrange
+            Day7Solution slnUnderTest = new Day7Solution();
             List<string> testInput = new List<string>();
             testInput.Add("Step C must be finished before step A can begin.");
             testInput.Add("Step C must be finished before step F can begin.");
@@ -412,9 +413,12 @@ namespace AdventOfCodeTests
             testInput.Add("Step F must be finished before step E can begin.");
             
             string expectedResult = "CABDFE";
-            //Act
 
+            //Act
+            string result = slnUnderTest.getSolutionPt1(testInput);
+            
             //Assert
+            Assert.Equal(expectedResult, result);
         }
 
         [Theory]
@@ -431,6 +435,33 @@ namespace AdventOfCodeTests
             //Assert
             Assert.Equal(expectedFirstChar, result.Item1);
             Assert.Equal(expectedSecondChar, result.Item2);
+        }
+
+        [Fact]
+        public void graphBuildSuccessfully()
+        {
+            //Arrange
+            Day7Solution slnUnderTest = new Day7Solution();
+            List<string> testInput = new List<string>();
+            testInput.Add("Step C must be finished before step A can begin.");
+            testInput.Add("Step C must be finished before step F can begin.");
+            testInput.Add("Step A must be finished before step B can begin.");
+            testInput.Add("Step A must be finished before step D can begin.");
+            testInput.Add("Step B must be finished before step E can begin.");
+            testInput.Add("Step D must be finished before step E can begin.");
+            testInput.Add("Step F must be finished before step E can begin.");
+            
+            //Act
+            var result = slnUnderTest.buildGraph(testInput);
+
+            //Assert
+            Assert.True(result.ContainsKey('A'));
+            Assert.Contains('C', result['A']);
+
+            Assert.True(result.ContainsKey('E'));
+            Assert.Contains('B', result['E']);
+
+            Assert.True(result.ContainsKey('C'));
         }
     }
 }
